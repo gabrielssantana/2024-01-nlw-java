@@ -1,10 +1,9 @@
-package com.gabrielssantana.certification_nlw.modules.students.entities;
+package com.gabrielssantana.certification_nlw.modules.questions.entities;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
@@ -20,14 +19,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "student")
-public class StudentEntity {
+@Entity(name = "question")
+public class QuestionEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(unique = true, nullable = false, length = 100)
-  private String email;
+  @Column(length = 50)
+  private String technology;
+
+  @Column(length = 255)
+  private String description;
 
   @CreationTimestamp
   @Column(name = "created_at")
@@ -37,6 +39,6 @@ public class StudentEntity {
   @Column(name = "updated_at")
   private LocalDateTime updatedAt;
 
-  @OneToMany(mappedBy = "studentEntity")
-  private List<CertificationStudentEntity> certificationStudentEntities;
+  @OneToMany(mappedBy = "questionEntity")
+  private List<AlternativeQuestionEntity> alternativeQuestionEntities;
 }
