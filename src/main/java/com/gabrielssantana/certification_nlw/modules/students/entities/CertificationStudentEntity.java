@@ -37,11 +37,11 @@ public class CertificationStudentEntity {
   private int grade;
 
   @CreationTimestamp
-  @Column(name = "created_at")
+  @Column(name = "created_at", columnDefinition = "timestamp(6) DEFAULT now()")
   private LocalDateTime createdAt;
 
   @UpdateTimestamp
-  @Column(name = "updated_at")
+  @Column(name = "updated_at", columnDefinition = "timestamp(6) DEFAULT now()")
   private LocalDateTime updatedAt;
 
   @ManyToOne

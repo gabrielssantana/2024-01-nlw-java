@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,11 +33,11 @@ public class QuestionEntity {
   private String description;
 
   @CreationTimestamp
-  @Column(name = "created_at")
+  @Column(name = "created_at", columnDefinition = "timestamp(6) DEFAULT now()")
   private LocalDateTime createdAt;
 
   @UpdateTimestamp
-  @Column(name = "updated_at")
+  @Column(name = "updated_at", columnDefinition = "timestamp(6) DEFAULT now()")
   private LocalDateTime updatedAt;
 
   @OneToMany(mappedBy = "questionEntity")

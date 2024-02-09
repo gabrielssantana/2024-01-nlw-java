@@ -41,18 +41,14 @@ public class AnswerCertificationEntity {
   @JoinColumn(name = "certification_id", insertable = false, updatable = false)
   private CertificationStudentEntity certificationStudentEntity;
 
-  // @ManyToOne
-  // @JoinColumn(name = "student_id", insertable = false, updatable = false)
-  // private StudentEntity studentEntity;
-
   @Column(name = "is_correct")
   private boolean isCorrect;
 
   @CreationTimestamp
-  @Column(name = "created_at")
+  @Column(name = "created_at", columnDefinition = "timestamp(6) DEFAULT now()")
   private LocalDateTime createdAt;
 
   @UpdateTimestamp
-  @Column(name = "updated_at")
+  @Column(name = "updated_at", columnDefinition = "timestamp(6) DEFAULT now()")
   private LocalDateTime updatedAt;
 }
